@@ -14,7 +14,7 @@ namespace BlogAPI.Controllers
         private IConfiguration _config;
         private ISqlData _db;
 
-        public LoginController(IConfiguration config, ISqlData db) 
+        public LoginController(IConfiguration config, ISqlData db)
         {
             _config = config;
             _db = db;
@@ -27,10 +27,10 @@ namespace BlogAPI.Controllers
         {
             UserModel user = _db.Authenticate(login.UserName, login.Password);
 
-            if(user != null)
+            if (user != null)
             {
                 var token = GenerateToken(user);
-                return Ok(token);
+                return Ok(new { id_token = token, id = user.Id });
             }
 
             return NotFound("User not found");
