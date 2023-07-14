@@ -12,6 +12,6 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string){
-    return this.http.post<string>("https://localhost:7176/api/Login/login", {username, password});
+    return this.http.post<string>("https://localhost:7136/api/Login/login", {username, password});
   }
 }
